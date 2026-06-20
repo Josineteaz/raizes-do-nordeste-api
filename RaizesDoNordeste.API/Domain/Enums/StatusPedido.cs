@@ -1,9 +1,9 @@
 ﻿public enum StatusPedido
 {
-    
-    Pago = 1,  
-    EmPreparo = 2,
-    Pronto = 3,
-    Entregue = 4,
-    Cancelado = 5
+    AguardandoPagamento = 1,
+    Pago = 2,  
+    EmPreparo = 3,
+    Pronto = 4,
+    Entregue = 5,
+    Cancelado = 6
 }
