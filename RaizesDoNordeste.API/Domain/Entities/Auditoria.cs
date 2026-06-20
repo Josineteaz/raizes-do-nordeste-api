@@ -3,7 +3,7 @@
     public class Auditoria
     {
         public long Id { get; set; }
-        public int UnidadeId { get; set; }
+        public int? UnidadeId { get; set; }
         public int? UsuarioId { get; set; }
         public DateTime DataAcao { get; set; }
         public string Acao { get; set; } = string.Empty;
