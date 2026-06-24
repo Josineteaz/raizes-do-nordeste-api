@@ -7,7 +7,6 @@ namespace RaizesDoNordeste.API.Domain.Entities
         public long Id { get; set; }
         public int ClienteId { get; set; }
 
-        // CORREÇÃO: Tornar o PedidoId opcional usando o ponto de interrogação (?)
         public long? PedidoId { get; set; }
 
         public TipoMovimentoFidelidade TipoMovimento { get; set; }
@@ -15,7 +14,6 @@ namespace RaizesDoNordeste.API.Domain.Entities
 
         public Usuario Cliente { get; set; } = null!;
 
-        // CORREÇÃO: A propriedade de navegação também deve aceitar nulo
         public Pedido? Pedido { get; set; }
     }
 }

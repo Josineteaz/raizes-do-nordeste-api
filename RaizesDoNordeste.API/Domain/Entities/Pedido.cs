@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using RaizesDoNordeste.API.Domain.Enums;
+﻿using RaizesDoNordeste.API.Domain.Enums;
 
 namespace RaizesDoNordeste.API.Domain.Entities
 {
@@ -10,7 +8,7 @@ namespace RaizesDoNordeste.API.Domain.Entities
         public int UnidadeId { get; set; }
         public int ClienteId { get; set; } 
         public int NumPedidoUnidade { get; set; }
-        public CanalPedido Canal { get; set; }
+        public CanalPedido CanalPedido { get; set; }
         public ModalidadePedido? Modalidade { get; set; }
         public DateTime DataPedido { get; set; }
         public StatusPedido Status { get; set; }
@@ -19,10 +17,10 @@ namespace RaizesDoNordeste.API.Domain.Entities
         public decimal ValorPago { get; set; }  
         public string? Observacao { get; set; }
 
-
         public Unidade Unidade { get; set; } = null!;
         public Usuario Cliente { get; set; } = null!;
         public ICollection<PedidoItem> Itens { get; set; } = new List<PedidoItem>();
         public ICollection<FidelidadeMovimento> FidelidadeMovimentos { get; set; } = new List<FidelidadeMovimento>();
+        public ICollection<Pagamento> Pagamentos { get; set; } = new List<Pagamento>();
     }
 }

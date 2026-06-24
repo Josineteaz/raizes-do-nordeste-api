@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace RaizesDoNordeste.API.Domain.Entities
+﻿namespace RaizesDoNordeste.API.Domain.Entities
 {
     public class PedidoItem
     {

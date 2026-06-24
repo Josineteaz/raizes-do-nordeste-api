@@ -1,6 +1,4 @@
-﻿using System.Collections.Specialized;
-
-namespace RaizesDoNordeste.API.Domain.Entities
+﻿namespace RaizesDoNordeste.API.Domain.Entities
 {
     public class ProdutoSazonalidade
     {
