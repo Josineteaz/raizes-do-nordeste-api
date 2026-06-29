@@ -182,7 +182,7 @@ JwtSettings__SecretKey="mudar_para_uma_chave_super_secreta_e_longa_com_mais_de_3
 ✅ **Exemplo de configuração local:**
 
 ```bash
-JwtSettings__SecretKey="RaizesDoNordesteApiChaveJwtSegura2026"
+JwtSettings__SecretKey="8r7235uiqjfpwoqfrk09123$4163y5r2jrqórj091759821y5r98hrfoi%qwfjpaogfkapofjqpoityf$"
 ```
 #### PASSO 4: Aplicar Migrations e Criar o Banco de Dados (EF Core)
 
@@ -209,7 +209,7 @@ Para facilitar a execução dos testes e a utilização das rotas protegidas da 
 
 1. Abra o **SQL Server Management Studio (SSMS)** e conecte-se à sua instância do SQL Server.
 2. Expanda a pasta **Databases** e localize o banco de dados `RaizesDoNordesteDb`. Em seguida, clique com o botão direito sobre ele e selecione **New Query** (*Nova Consulta*).
-3. Copie, cole e execute o conteúdo do script `database_seed.sql` localizado na pasta `db` do projeto.
+3. Copie, cole e execute o conteúdo do script `database_seed.sql` localizado na pasta `db` do repositório.
 
 > 🔐 **Nota de Segurança:**
 >
@@ -223,9 +223,7 @@ Para facilitar a execução dos testes e a utilização das rotas protegidas da 
 
 2. Pressione `F5` para executar a aplicação em **modo de depuração**, ou `Ctrl + F5` para executá-la **sem depuração**.
 
-3. Caso existam múltiplos perfis de execução, selecione o perfil correspondente ao projeto da API antes de iniciar a aplicação.
-
-4. Aguarde a abertura da janela do terminal e a mensagem indicando que a aplicação está em execução.
+3. Aguarde a abertura da janela do terminal e a mensagem indicando que a aplicação está em execução.
 
 > ✅ **Execução bem-sucedida:**  
 > A API estará disponível nos endereços configurados no arquivo `launchSettings.json`, normalmente utilizando os protocolos HTTP e/ou HTTPS.
@@ -258,9 +256,9 @@ Para utilizar a coleção, siga os passos abaixo:
 
 1. Abra o **Postman**.
 2. Clique em **Import**.
-3. Selecione o arquivo `raizes-do-nordeste.postman_collection.json`.
+3. Selecione o arquivo `raizes-do-nordeste.postman_collection.json` que se encontra na pasta `postman` do repositório.
 4. Aguarde a importação da coleção.
-5. Executar os testes na ordem que aparecem, observando suas pré-condições, quando existir.
+5. Execute os testes na ordem que aparecem, observando suas pré-condições, quando existir.
 
 ##### Informações sobre a coleção
 
@@ -284,49 +282,32 @@ Dessa forma, após executar o login com sucesso, não é necessário copiar ou c
 
   Dessa forma, a execução da coleção deve respeitar a ordem definida no mapeamento de dependências.
 
-##### Lista dos Testes
-
-Autenticação e Controle de Acesso
-
-| Código | Cenário | Objetivo |
-| ------- | -------- | --------- |
-| T01 | Login do Cliente A | Validar a autenticação de um usuário do perfil Cliente A. |
-| T02 | Login do Cliente B | Validar a autenticação de um usuário do perfil Cliente B. |
-| T03 | Login do Cozinheiro da Unidade 2 | Validar a autenticação do perfil Cozinheiro da Unidade 2. |
-| T04 | Login do Atendente da Unidade 2 | Validar a autenticação do perfil Atendente da Unidade 2. |
-| T05 | Login do Administrador | Validar a autenticação do perfil Administrador. |
-
-Pedidos
-
-| Código | Cenário | Objetivo |
-| ------- | -------- | --------- |
-| T06 | Criar Pedido para Unidade 2 | Validar a criação de um pedido para a Unidade 2. |
-| T07 | Criar Pedido com Promoção e utilização de pontos de fidelidade | Validar a aplicação simultânea de promoções e resgate de pontos. |
-| T08 | Mudar Status do Pedido para Em Preparo | Validar a transição do pedido para o status `EM_PREPARO`. |
-| T09 | Mudar Status do Pedido para Pronto | Validar a transição do pedido para o status `PRONTO`. |
-| T10 | Atendente alterar Status do Pedido para Entregue | Validar a conclusão do pedido pelo perfil Atendente. |
-| T11 | Simular Pagamento | Validar o fluxo de processamento e confirmação do pagamento. |
-
-LGPD
-
-| Código | Cenário | Objetivo |
-| ------- | -------- | --------- |
-| T12 | Criar usuário com Perfil Atendente | Validar o cadastro de usuários do perfil Atendente. |
-| T13 | LGPD - Anonimização de usuário | Validar o processo de anonimização de dados pessoais conforme a LGPD. |
-| T14 | Listar Usuários | Validar a consulta dos usuários cadastrados no sistema. |
-| T15 | Consultar Logs de ACESSO_SENSIVEL | Validar a rastreabilidade e auditoria de acessos a informações sensíveis. |
-
-Cenários de Erro
+##### Ordem de Execução dos Testes
 
 | Código | Cenário | Objetivo |
 | ------- | -------- | --------- |
 | TE16 | Login - Senha inválida | Validar o retorno de erro para credenciais incorretas. |
-| TE17 | Cadastro - Tentativa de injeção de Perfil ADM | Validar a proteção contra elevação indevida de privilégios durante o cadastro. |
-| TE18 | Unidade - Tentativa de alteração com perfil sem permissão | Validar o controle de autorização por perfil de acesso. |
 | TE19 | Pedidos - Listar sem login | Validar o bloqueio de acesso a recursos protegidos sem autenticação. |
+| TE17 | Cadastro - Tentativa de injeção de Perfil ADM | Validar a proteção contra elevação indevida de privilégios durante o cadastro. |
+| T01 | Login do Cliente A | Validar a autenticação de um usuário do perfil Cliente A. |
+| T06 | Criar Pedido para Unidade 2 | Validar a criação de um pedido para a Unidade 2. |
+| T11 | Simular Pagamento | Validar o fluxo de processamento e confirmação do pagamento. |
 | TE20 | Pedidos - Produto fora de época sazonal | Validar a restrição de venda de produtos indisponíveis por sazonalidade. |
 | TE21 | Pedidos - Produto inexistente | Validar o tratamento para produtos não cadastrados. |
 | TE22 | Pedidos - Falta de estoque na Unidade 1 | Validar a indisponibilidade de itens sem estoque. |
 | TE23 | Pedidos - Quantidade negativa | Validar a rejeição de quantidades inválidas no pedido. |
-| TE24 | Pedidos - Transição proibida de status | Validar as regras de negócio para mudança de status do pedido. |
+| T02 | Login do Cliente B | Validar a autenticação de um usuário do perfil Cliente B. |
+| T07 | Criar Pedido com Promoção e utilização de pontos de fidelidade | Validar a aplicação simultânea de promoções e resgate de pontos. |
 | TE25 | Pagamentos - Pagamento recusado | Validar o tratamento de falhas no processamento do pagamento. |
+| T13 | LGPD - Anonimização de usuário | Validar o processo de anonimização de dados pessoais conforme a LGPD. |
+| T03 | Login do Cozinheiro da Unidade 2 | Validar a autenticação do perfil Cozinheiro da Unidade 2. |
+| T08 | Mudar Status do Pedido para Em Preparo | Validar a transição do pedido para o status `EM_PREPARO`. |
+| T09 | Mudar Status do Pedido para Pronto | Validar a transição do pedido para o status `PRONTO`. |
+| T04 | Login do Atendente da Unidade 2 | Validar a autenticação do perfil Atendente da Unidade 2. |
+| T10 | Atendente alterar Status do Pedido para Entregue | Validar a conclusão do pedido pelo perfil Atendente. |
+| TE18 | Unidade - Tentativa de alteração com perfil sem permissão | Validar o controle de autorização por perfil de acesso. |
+| TE24 | Pedidos - Transição proibida de status | Validar as regras de negócio para mudança de status do pedido. |
+| T05 | Login do Administrador | Validar a autenticação do perfil Administrador. |
+| T12 | Criar usuário com Perfil Atendente | Validar o cadastro de usuários do perfil Atendente. |
+| T14 | Listar Usuários | Validar a consulta dos usuários cadastrados no sistema. |
+| T15 | Consultar Logs | Validar a auditoria. |
