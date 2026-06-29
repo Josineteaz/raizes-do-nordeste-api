@@ -164,7 +164,7 @@ ConnectionStrings__DefaultConnection="Server=SeuServidor;Database=RaizesDoNordes
 ✅ **Exemplo de configuração local:**
 
 ```bash
-ConnectionStrings__DefaultConnection="Server=localhost,1433;Database=RaizesDoNordesteDb;User Id=sa;Password=Senh@Segur@123;TrustServerCertificate=True;"
+ConnectionStrings__DefaultConnection="Server=localhost;Database=RaizesDoNordesteDb;User Id=sa;Password=Senh@Segur@123;TrustServerCertificate=True;"
 ```
 
 ##### Configuração da chave JWT
@@ -209,7 +209,7 @@ Para facilitar a execução dos testes e a utilização das rotas protegidas da 
 
 1. Abra o **SQL Server Management Studio (SSMS)** e conecte-se à sua instância do SQL Server.
 2. Expanda a pasta **Databases** e localize o banco de dados `RaizesDoNordesteDb`. Em seguida, clique com o botão direito sobre ele e selecione **New Query** (*Nova Consulta*).
-3. Copie, cole e execute o conteúdo do script `database_seed.sql` localizado na `db` do projeto.
+3. Copie, cole e execute o conteúdo do script `database_seed.sql` localizado na pasta `db` do projeto.
 
 > 🔐 **Nota de Segurança:**
 >
