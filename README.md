@@ -245,7 +245,8 @@ A interface Swagger permite visualizar, documentar e executar as rotas da API di
 
 #### 6.2 Testes via Postman
 
-O projeto disponibiliza uma coleção Postman contendo exemplos de chamadas para os principais fluxos da aplicação. O arquivo encontra-se na pasta `postman` do projeto com o nome:
+O projeto disponibiliza uma coleção Postman contendo exemplos de chamadas para os principais fluxos da aplicação. 
+O arquivo encontra-se na pasta `postman` do projeto com o nome:
 
 ```text
 raizes-do-nordeste.postman_collection.json
@@ -256,31 +257,8 @@ Para utilizar a coleção, siga os passos abaixo:
 
 1. Abra o **Postman**.
 2. Clique em **Import**.
-3. Selecione o arquivo `raizes-do-nordeste.postman_collection.json` que se encontra na pasta `postman` do repositório.
-4. Aguarde a importação da coleção.
-5. Execute os testes na ordem que aparecem, observando suas pré-condições, quando existir.
-
-##### Informações sobre a coleção
-
-A coleção foi configurada para automatizar o processo de autenticação das rotas protegidas da API.
-
-* **Captura automática do token JWT:**  
-  A requisição de login possui um script de pós-execução (*Tests*) responsável por capturar o `accessToken` retornado pela API e armazená-lo automaticamente na variável `{{token_jwt}}`.
-
-* **Herança do Bearer Token:**  
-  As demais requisições protegidas utilizam a configuração de autorização do tipo **Bearer Token**, referenciando a variável `{{token_jwt}}`.
-
-Dessa forma, após executar o login com sucesso, não é necessário copiar ou colar o token manualmente; todas as requisições subsequentes serão autenticadas automaticamente.
-
-
-* **Pré-condições configuradas (encadeamento de testes / dependência de execução):**  
-  Alguns testes fazem parte de fluxos encadeados e dependem da execução bem-sucedida de uma ou mais requisições anteriores para que o resultado esperado seja obtido.
-
-  Essas dependências são previamente mapeadas e documentadas na aba `Pre-request Script` da requisição correspondente, indicando o fluxo necessário para sua execução.
-
-  Caso a pré-condição não seja atendida, o teste poderá falhar devido à ausência de dados ou de contexto necessário para sua execução.
-
-  Dessa forma, a execução da coleção deve respeitar a ordem definida no mapeamento de dependências.
+3. Selecione o arquivo `raizes-do-nordeste.postman_collection.json`.
+4. Execute os testes na ordem citada abaixo.
 
 ##### Ordem de Execução dos Testes
 
@@ -311,3 +289,25 @@ Dessa forma, após executar o login com sucesso, não é necessário copiar ou c
 | T12 | Criar usuário com Perfil Atendente | Validar o cadastro de usuários do perfil Atendente. |
 | T14 | Listar Usuários | Validar a consulta dos usuários cadastrados no sistema. |
 | T15 | Consultar Logs | Validar a auditoria. |
+
+##### Informações sobre a coleção
+
+A coleção foi configurada para automatizar o processo de autenticação das rotas protegidas da API.
+
+* **Captura automática do token JWT:**  
+  A requisição de login possui um script de pós-execução (*Tests*) responsável por capturar o `accessToken` retornado pela API e armazená-lo automaticamente na variável `{{token_jwt}}`.
+
+* **Herança do Bearer Token:**  
+  As demais requisições protegidas utilizam a configuração de autorização do tipo **Bearer Token**, referenciando a variável `{{token_jwt}}`.
+
+Dessa forma, após executar o login com sucesso, não é necessário copiar ou colar o token manualmente; todas as requisições subsequentes serão autenticadas automaticamente.
+
+
+* **Pré-condições configuradas (encadeamento de testes / dependência de execução):**  
+  Alguns testes fazem parte de fluxos encadeados e dependem da execução bem-sucedida de uma ou mais requisições anteriores para que o resultado esperado seja obtido.
+
+  Essas dependências são previamente mapeadas e documentadas na aba `Pre-request Script` da requisição correspondente, indicando o fluxo necessário para sua execução.
+
+  Caso a pré-condição não seja atendida, o teste poderá falhar devido à ausência de dados ou de contexto necessário para sua execução.
+
+  Dessa forma, a execução da coleção deve respeitar a ordem definida no mapeamento de dependências.
