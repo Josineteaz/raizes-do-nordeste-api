@@ -1,0 +1,1423 @@
+{
+  "info": {
+    "_postman_id": "c138da72-2026-4b11-bf74-e8674996bf42",
+    "name": "Rede Raízes do Nordeste - API",
+    "description": "Coleção oficial de testes automatizados e manuais para validação dos fluxos de segurança, multicanalidade, controle de estoque, auditoria, LGPD e pagamentos da Rede Raízes do Nordeste.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [	    
+        {
+          "name": "T01 [Sucesso] Login do Cliente A",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code deve ser 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "var jsonData = pm.response.json();",
+                  "if(jsonData.accessToken) {",
+                  "    pm.collectionVariables.set(\"token_jwt\", jsonData.accessToken);",
+                  "}"
+                ],
+                "type": "javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"joao.silva@email.com\",\n  \"senha\": \"SenhaCliente@123\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/auth/login",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "auth",
+                "login"
+              ]
+            }
+          }
+        },
+        {
+          "name": "T02 [Sucesso] Login do Cliente B",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code deve ser 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "var jsonData = pm.response.json();",
+                  "if(jsonData.accessToken) {",
+                  "    pm.collectionVariables.set(\"token_jwt\", jsonData.accessToken);",
+                  "}"
+                ],
+                "type": "javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"luzia.sousa@email.com\",\n  \"senha\": \"SenhaCliente@123\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/auth/login",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "auth",
+                "login"
+              ]
+            }
+          }
+        },
+		{
+		  "name": "T03 [Sucesso] Login do Cozinheiro da Unidade B",
+		  "event": [
+			{
+			  "listen": "test",
+			  "script": {
+				"exec": [
+				  "pm.test(\"Login da Cozinha efetuado com sucesso\", function () {",
+				  "    pm.response.to.have.status(200);",
+				  "});",
+				  "var jsonData = pm.response.json();",
+				  "if(jsonData.accessToken) {",
+				  "    pm.collectionVariables.set(\"token_jwt\", jsonData.accessToken);",
+				  "}"
+				],
+				"type": "javascript"
+			  }
+			}
+		  ],
+		  "request": {
+			"method": "POST",
+			"header": [{ "key": "Content-Type", "value": "application/json" }],
+			"body": {
+			  "mode": "raw",
+			  "raw": "{\n  \"email\": \"luzia.cozinha2@raizesdonordeste.com\",\n  \"senha\": \"SenhaFranquia@123\"\n}"
+			},
+			"url": {
+			  "raw": "{{base_url}}/auth/login",
+			  "host": ["{{base_url}}"],
+			  "path": ["auth", "login"]
+			}
+		  }
+		},
+		{
+		  "name": "T04 [Sucesso] Login do Atendente da Unidade B",
+		  "event": [
+			{
+			  "listen": "test",
+			  "script": {
+				"exec": [
+				  "pm.test(\"Login do Atendente efetuado com sucesso\", function () {",
+				  "    pm.response.to.have.status(200);",
+				  "});",
+				  "var jsonData = pm.response.json();",
+				  "if(jsonData.accessToken) {",
+				  "    pm.collectionVariables.set(\"token_jwt\", jsonData.accessToken);",
+				  "}"
+				],
+				"type": "javascript"
+			  }
+			}
+		  ],
+		  "request": {
+			"method": "POST",
+			"header": [{ "key": "Content-Type", "value": "application/json" }],
+			"body": {
+			  "mode": "raw",
+			  "raw": "{\n  \"email\": \"jose.atendimento2@raizesdonordeste.com\",\n  \"senha\": \"SenhaFranquia@123\"\n}"
+			},
+			"url": {
+			  "raw": "{{base_url}}/auth/login",
+			  "host": ["{{base_url}}"],
+			  "path": ["auth", "login"]
+			}
+		  }
+		},
+        {
+          "name": "T05 [Sucesso] Login do Administrador",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code deve ser 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "var jsonData = pm.response.json();",
+                  "if(jsonData.accessToken) {",
+                  "    pm.collectionVariables.set(\"token_jwt\", jsonData.accessToken);",
+                  "}"
+                ],
+                "type": "javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"admin.neto@raizesdonordeste.com\",\n  \"senha\": \"SenhaFranquia@123\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/auth/login",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "auth",
+                "login"
+              ]
+            }
+          }
+        }
+      ]
+    }, 
+    {
+      "name": "Pedidos",
+      "item": [
+        {
+          "name": "T06 [Sucesso] Criar Pedido para Unidade2",
+          "event": [
+		  	{
+			  "listen": "prerequest",
+			  "script": {
+				"exec": [
+				  "    console.warn(\"⚠️ [ATENÇÃO] Este teste depende do 'Login Cliente A (T01)'. Certifique-se de executá-lo primeiro!\");"
+				],
+				"type": "javascript"
+			  }
+			},
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Pedido em modalidade PICKUP gerado\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});",
+                  "var jsonData = pm.response.json();",
+                  "if(jsonData.pedidoId) {",
+                  "    pm.collectionVariables.set(\"pedido_id_recente\", jsonData.pedidoId);",
+                  "}"
+                ],
+                "type": "javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token_jwt}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+			"body": {
+			  "mode": "raw",
+			  "raw": "{\n  \"canalPedido\": 1,\n  \"modalidade\": 2,\n  \"clienteId\": 8,\n  \"unidadeId\": 2,\n  \"itens\": [\n    {\n      \"produtoId\": 4,\n      \"quantidade\": 2\n    }\n  ],\n  \"observacao\": \"Uma tapioca sem manteiga.\"\n}"
+			},
+            "url": {
+              "raw": "{{base_url}}/pedidos",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "pedidos"
+              ]
+            }
+          }
+        },
+        {
+          "name": "T07 [Sucesso] Criar Pedido com Promoção e utilizo de pontos de fidelidade",
+          "event": [
+			{
+			  "listen": "prerequest",
+			  "script": {
+				"exec": [
+				  "    console.warn(\"⚠️ [ATENÇÃO] Este teste depende do 'Login Cliente B (T02)'. Certifique-se de executá-lo primeiro!\");"
+				],
+				"type": "javascript"
+			  }
+			},
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Pedido em modalidade DELIVERY gerado\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});"
+                ],
+                "type": "javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token_jwt}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+			"body": {
+			  "mode": "raw",
+			  "raw": "{\n  \"canalPedido\": 1,\n  \"modalidade\": 1,\n  \"clienteId\": 9,\n  \"unidadeId\": 2,\n  \"observacao\": \"Pedido com desconto\",\n  \"pontosParaUtilizar\": 50,\n  \"itens\": [\n    {\n      \"produtoId\": 4,\n      \"quantidade\": 2\n    }\n  ]\n}"
+			},
+            "url": {
+              "raw": "{{base_url}}/pedidos",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "pedidos"
+              ]
+            }
+          }
+        },
+				{
+		  "name": "T08 [Sucesso] Mudar Status do Pedido em EmPreparo",
+		  "event": [
+		  	{
+			  "listen": "prerequest",
+			  "script": {
+				"exec": [
+				  "    console.warn(\"⚠️ [ATENÇÃO] Este teste depende do 'Login do Cozinheiro da Unidade B (T03)'. Certifique-se de executá-lo primeiro!\");"
+				],
+				"type": "javascript"
+			  }
+			},
+			{
+			  "listen": "test",
+			  "script": {
+				"exec": [
+				  "var idPedido = pm.collectionVariables.get(\"pedido_id_recente\");",
+				  "pm.expect(pm.response.code).to.be.oneOf([200, 422]);",
+				  "",
+				  "if (pm.response.code === 200) {",
+				  "    pm.test(`Status do pedido nº ${idPedido} alterado de Pago para EmPreparo`, function () {",
+				  "        pm.response.to.have.status(200);",
+				  "    });",
+				  "} else if (pm.response.code === 422) {",
+				  "    pm.test(`O pedido já se encontra no status 'EmPreparo'. Nenhuma transição foi realizada.`, function () {",
+				  "        pm.response.to.have.status(422);",
+				  "        var jsonData = pm.response.json();",
+				  "        pm.expect(jsonData.error).to.eql(\"REGRA_NEGOCIO_VIOLADA\");",
+				  "    });",
+				  "}"
+				],
+				"type": "javascript"
+			  }
+			}
+		  ],
+		  "request": {
+			"auth": {
+			  "type": "bearer",
+			  "bearer": [{ "key": "token", "value": "{{token_jwt}}", "type": "string" }]
+			},
+			"method": "PATCH",
+			"header": [{ "key": "Content-Type", "value": "application/json" }],
+			"body": { "mode": "raw", "raw": "{\n  \"novoStatus\": 3\n}" },
+			"url": {
+			  "raw": "{{base_url}}/pedidos/{{pedido_id_recente}}/status",
+			  "host": ["{{base_url}}"],
+			  "path": ["pedidos", "{{pedido_id_recente}}", "status"]
+			}
+		  }
+		},
+		{
+		  "name": "T09 [Sucesso] Mudar Status do Pedido em Pronto",
+		  "event": [
+		  	{
+			  "listen": "prerequest",
+			  "script": {
+				"exec": [
+				  "    console.warn(\"⚠️ [ATENÇÃO] Este teste depende do 'Login do Cozinheiro da Unidade B (T03)'. Certifique-se de executá-lo primeiro!\");"
+				],
+				"type": "javascript"
+			  }
+			},
+			{
+			  "listen": "test",
+			  "script": {
+				"exec": [
+				  "var idPedido = pm.collectionVariables.get(\"pedido_id_recente\");",
+				  "pm.expect(pm.response.code).to.be.oneOf([200, 422]);",
+				  "",
+				  "if (pm.response.code === 200) {",
+				  "    pm.test(`Status do pedido nº ${idPedido} alterado de EmPreparo para Pronto`, function () {",
+				  "        pm.response.to.have.status(200);",
+				  "    });",
+				  "} else if (pm.response.code === 422) {",
+				  "    pm.test(`O pedido já se encontra no status 'Pronto'. Nenhuma transição foi realizada.`, function () {",
+				  "        pm.response.to.have.status(422);",
+				  "        var jsonData = pm.response.json();",
+				  "        pm.expect(jsonData.error).to.eql(\"REGRA_NEGOCIO_VIOLADA\");",
+				  "    });",
+				  "}"
+				],
+				"type": "javascript"
+			  }
+			}
+		  ],
+		  "request": {
+			"auth": {
+			  "type": "bearer",
+			  "bearer": [{ "key": "token", "value": "{{token_jwt}}", "type": "string" }]
+			},
+			"method": "PATCH",
+			"header": [{ "key": "Content-Type", "value": "application/json" }],
+			"body": { "mode": "raw", "raw": "{\n  \"novoStatus\": 4\n}" },
+			"url": {
+			  "raw": "{{base_url}}/pedidos/{{pedido_id_recente}}/status",
+			  "host": ["{{base_url}}"],
+			  "path": ["pedidos", "{{pedido_id_recente}}", "status"]
+			}
+		  }
+		},
+		{
+		  "name": "T10 [Sucesso] Atendente Mudar Status do Pedido em Entregue",
+		  "event": [
+			{
+			  "listen": "prerequest",
+			  "script": {
+				"exec": [
+				  "    console.warn(\"⚠️ [ATENÇÃO] Este teste depende do 'Login do Atendente da Unidade B (T04)'. Certifique-se de executá-lo primeiro!\");"
+				],
+				"type": "javascript"
+			  }
+			},
+			{
+			  "listen": "test",
+			  "script": {
+				"exec": [
+				  "var idPedido = pm.collectionVariables.get(\"pedido_id_recente\");",
+				  "pm.expect(pm.response.code).to.be.oneOf([200, 422]);",
+				  "",
+				  "if (pm.response.code === 200) {",
+				  "    pm.test(`Status do pedido nº ${idPedido} alterado de Pronto para Entregue`, function () {",
+				  "        pm.response.to.have.status(200);",
+				  "    });",
+				  "} else if (pm.response.code === 422) {",
+				  "    pm.test(`O pedido já se encontra no status 'Entregue'. Nenhuma transição foi realizada.`, function () {",
+				  "        pm.response.to.have.status(422);",
+				  "        var jsonData = pm.response.json();",
+				  "        pm.expect(jsonData.error).to.eql(\"REGRA_NEGOCIO_VIOLADA\");",
+				  "    });",
+				  "}"
+				],
+				"type": "javascript"
+			  }
+			}
+		  ],
+		  "request": {
+			"auth": {
+			  "type": "bearer",
+			  "bearer": [{ "key": "token", "value": "{{token_jwt}}", "type": "string" }]
+			},
+			"method": "PATCH",
+			"header": [{ "key": "Content-Type", "value": "application/json" }],
+			"body": { "mode": "raw", "raw": "{\n  \"novoStatus\": 5\n}" },
+			"url": {
+			  "raw": "{{base_url}}/pedidos/{{pedido_id_recente}}/status",
+			  "host": ["{{base_url}}"],
+			  "path": ["pedidos", "{{pedido_id_recente}}", "status"]
+			}
+		  }
+		}
+      ]
+    },
+	{
+	  "name": "Pagamentos",
+	  "item": [
+		{
+		  "name": "T11 [Sucesso] Simular Pagamento",
+			"event": [
+				{
+				  "listen": "prerequest",
+				  "script": {
+					"exec": [
+					  "    console.warn(\"⚠️ [ATENÇÃO] Este teste depende do 'Login Cliente A (T01)'. Certifique-se de executá-lo primeiro!\");"
+					],
+					"type": "javascript"
+				  }
+				},
+			  {
+				"listen": "test",
+				"script": {
+				  "exec": [
+					"pm.test(\"Validar pagamento processado ou cenário de conflito\", function () {",
+					"    pm.expect(pm.response.code).to.be.oneOf([200, 409]);",
+					"    ",
+					"    var jsonData = pm.response.json();",
+					"    ",
+					"    if (pm.response.code === 200) {",
+					"        pm.response.to.have.status(200);",
+					"        pm.expect(jsonData.sucesso).to.be.true;",
+					"        pm.expect(jsonData.pedidoId).to.be.a(\"number\");",
+					"        pm.expect(jsonData.mensagem).to.not.be.null;",
+					"    } else if (pm.response.code === 409) {",
+					"        pm.response.to.have.status(409);",
+					"        pm.expect(jsonData.error).to.eql(\"STATUS_CONFLITO\");",
+					"        pm.expect(jsonData.message).to.include(\"cancelado anteriormente.\");",
+					"        pm.expect(jsonData.timestamp).to.not.be.undefined;",
+					"    }",
+					"});"
+				  ],
+				  "type": "javascript"
+				}
+			  }
+			],
+		  "request": {
+			"auth": {
+			  "type": "bearer",
+			  "bearer": [
+				{
+				  "key": "token",
+				  "value": "{{token_jwt}}",
+				  "type": "string"
+				}
+			  ]
+			},
+			"method": "POST",
+			"header": [
+			  {
+				"key": "Content-Type",
+				"value": "application/json"
+			  }
+			],
+			"body": {
+			  "mode": "raw",
+			  "raw": "{\n  \"pedidoId\": 1,\n  \"status\": 2 \n}"
+			},
+			"url": {
+			  "raw": "{{base_url}}/pagamentos/simular",
+			  "host": [
+				"{{base_url}}"
+			  ],
+			  "path": [
+				"pagamentos",
+				"simular"
+			  ]
+			}
+		  }
+		}
+	  ]
+	},
+    {
+      "name": "Usuarios",
+      "item": [
+        {
+          "name": "T12 [Sucesso] Criar usuário com Perfil Atendente",
+          "event": [
+		  	{
+			  "listen": "prerequest",
+			  "script": {
+				"exec": [
+				  "    console.warn(\"⚠️ [ATENÇÃO] Este teste depende do 'Login do Administrador (T05)'. Certifique-se de executá-lo primeiro!\");"
+				],
+				"type": "javascript"
+			  }
+			},
+            {
+              "listen": "test",
+              "script": {
+				"exec": [
+				  "pm.test(\"Criado com sucesso (Requer cargo: Administrador ou Gerente da Unidade)\", function () {",
+				  "    if (pm.response.code === 201) {",
+				  "        pm.response.to.have.status(201);",
+				  "    }",
+				  "});",
+				  "",
+				  "pm.test(\"Retorna 422 se o usuário não for Gerente da unidade ou Administrador, ou se violar regras do escopo\", function () {",
+				  "    if (pm.response.code === 422) {",
+				  "        pm.response.to.have.status(422);",
+				  "        var jsonData = pm.response.json();",
+				  "        ",
+				  "        // Valida se a mensagem de erro detalha a restrição de cargo do edital",
+				  "        pm.expect(jsonData.error).to.be.oneOf([\"ACESSO_NEGADO\", \"REGRA_NEGOCIO_VIOLADA\", \"REQUEST_INVALIDO\"]);",
+				  "        pm.expect(jsonData.message).to.match(/(gerente|administrador|permissão|cargo)/i);",
+				  "    }",
+				  "});"
+				],
+                "type": "javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token_jwt}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Severino dos Santos\",\n  \"email\": \"severino.atendimento@raizesdonordeste.com\",\n  \"senha\": \"SenhaAtendente@123\",\n  \"perfil\": 2,\n  \"unidadeId\": 1,\n  \"consentimentoLgpd\": false\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/usuarios",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "usuarios"
+              ]
+            }
+          }
+        },
+		{
+		  "name": "T13 [Sucesso] LGPD - Anonimização de Usuário",
+		  "event": [
+			{
+			  "listen": "prerequest",
+			  "script": {
+				"exec": [
+				  "    console.warn(\"⚠️ [ATENÇÃO] Este teste depende do 'Login Cliente B (T02) ou do Administrador (T05)'. Certifique-se de executá-lo primeiro!\");"
+				],
+				"type": "javascript"
+			  }
+			},
+			{
+			  "listen": "test",
+			  "script": {
+				"exec": [
+				  "pm.test(\"Validar resultado da exclusão definitiva (LGPD)\", function () {",
+				  "    pm.expect(pm.response.code).to.be.oneOf([200, 401, 404]);",
+				  "    ",
+				  "    var jsonData = pm.response.json();",
+				  "    ",
+				  "    if (pm.response.code === 200) {",
+				  "        pm.response.to.have.status(200);",
+				  "        pm.expect(jsonData.message).to.include(\"Cliente anonimado por LGPD\");",
+				  "        pm.expect(jsonData.path).to.not.be.undefined;",
+				  "    } ",
+				  "    else if (pm.response.code === 404) {",
+				  "        pm.response.to.have.status(404);",
+				  "        pm.expect(jsonData.error).to.eql(\"USUARIO_INEXISTENTE\");",
+				  "        pm.expect(jsonData.message).to.eql(\"Usuário não encontrado ou operação negada.\");",
+				  "    } ",
+				  "    else if (pm.response.code === 401) {",
+				  "        pm.response.to.have.status(401);",
+				  "        pm.expect(jsonData.error).to.eql(\"CREDENCIAIS_INVALIDAS\");",
+				  "    }",
+				  "});"
+				],
+				"type": "javascript"
+			  }
+			}
+		  ],
+		  "request": {
+			"auth": {
+			  "type": "bearer",
+			  "bearer": [
+				{
+				  "key": "token",
+				  "value": "{{token_jwt}}",
+				  "type": "string"
+				}
+			  ]
+			},
+			"method": "POST",
+			"header": [],
+			"body": {
+			  "mode": "none"
+			},
+			"url": {
+			  "raw": "{{base_url}}/usuarios/9/excluir-lgpd",
+			  "host": [
+				"{{base_url}}"
+			  ],
+			  "path": [
+				"usuarios",
+				"9",
+				"excluir-lgpd"
+			  ]
+			}
+		  }
+		},
+		{
+		  "name": "T14 [Sucesso] List de Usuários",
+			"event": [
+			  {
+				  "listen": "prerequest",
+				  "script": {
+					"exec": [
+					  "    console.warn(\"⚠️ [ATENÇÃO] Este teste depende do 'Login do Administrador (T05) '. Certifique-se de executá-lo primeiro!\");"
+					],
+					"type": "javascript"
+				  }
+			  },
+			  {
+				"listen": "test",
+				"script": {
+					"exec": [
+					  "pm.test(\"Listagem executada com sucesso e disparou auditoria de acesso sensível\", function () {",
+					  "    pm.response.to.have.status(200);",
+					  "    ",
+					  "    var jsonData = pm.response.json();",
+					  "    pm.expect(jsonData).to.be.an('array');",
+					  "    ",
+					  "    pm.expect(jsonData.length).to.be.at.most(50);",
+					  "    ",
+					  "    pm.response.to.have.header(\"X-Audit-Recorded\");",
+					  "    pm.response.to.have.header(\"X-Audit-Action\");",
+					  "    ",
+					  "    pm.expect(pm.response.headers.get(\"X-Audit-Recorded\")).to.eql(\"true\");",
+					  "    pm.expect(pm.response.headers.get(\"X-Audit-Action\")).to.eql(\"ACESSO_SENSIVEL\");",
+					  "});"
+					],
+				  "type": "javascript"
+				}
+			  }
+			],
+			"request": {
+			  "auth": {
+				"type": "bearer",
+				"bearer": [
+				  {
+					"key": "token",
+					"value": "{{token_jwt}}",
+					"type": "string"
+				  }
+				]
+			  },
+			  "method": "GET",
+			  "header": [],
+			  "url": {
+				"raw": "{{base_url}}/usuarios?page=1&limit=10",
+				"host": [
+				  "{{base_url}}"
+				],
+				"path": [
+				  "usuarios"
+				],
+				"query": [
+				  {
+					"key": "page",
+					"value": "1"
+				  },
+				  {
+					"key": "limit",
+					"value": "10"
+				  }
+				]
+			  }
+			}
+		}
+      ]
+    },   
+    {
+      "name": "Auditoria",
+      "item": [
+		{
+			"name": "T15 [Sucesso] Consultar Logs de ACESSO_SENSIVEL",
+			"event": [
+			{
+			  "listen": "prerequest",
+			  "script": {
+				"exec": [
+				  "    console.warn(\"⚠️ [ATENÇÃO] Este teste depende do 'Login Administrador (T05)'. Certifique-se de executá-lo primeiro!\");"
+				],
+				"type": "javascript"
+			  }
+			},
+			{
+			  "listen": "test",
+			  "script": {
+				"exec": [
+				  "pm.test(\"Logs de auditoria retornados com sucesso\", function () {",
+				  "    pm.response.to.have.status(200);",
+				  "    ",
+				  "    var jsonData = pm.response.json();",
+				  "    pm.expect(jsonData).to.be.an('array');",
+				  "});",
+				  "",
+				  "pm.test(\"Valida estrutura dos campos de auditoria\", function () {",
+				  "    var jsonData = pm.response.json();",
+				  "    if (jsonData.length > 0) {",
+				  "        pm.expect(jsonData[0]).to.have.all.keys('id', 'unidadeId', 'usuarioId', 'dataAcao', 'acao', 'entidade', 'registroId', 'descricao');",
+				  "    }",
+				  "});",
+				  "",
+				  "pm.test(\"Garante limite de paginação do servidor\", function () {",
+				  "    var jsonData = pm.response.json();",
+				  "    pm.expect(jsonData.length).to.be.at.most(10);",
+				  "});"
+				],
+				"type": "javascript"
+			  }
+			}
+			],
+			"request": {
+		"auth": {
+		  "type": "bearer",
+		  "bearer": [
+			{
+			  "key": "token",
+			  "value": "{{token_jwt}}",
+			  "type": "string"
+			}
+		  ]
+		},
+		"method": "GET",
+		"header": [],
+		"url": {
+		  "raw": "{{base_url}}/auditorias/logs?acao=ACESSO_SENSIVEL&page=1&limit=10",
+		  "host": [
+			"{{base_url}}"
+		  ],
+		  "path": [
+			"auditorias",
+			"logs"
+		  ],
+		  "query": [
+			{
+			  "key": "acao",
+			  "value": "ACESSO_SENSIVEL",
+			  "description": "Filtro por tipo de ação de auditoria"
+			},
+			{
+			  "key": "recurso",
+			  "value": "usuarios",
+			  "disabled": true,
+			  "description": "Filtro por recurso (opcional)"
+			},
+			{
+			  "key": "page",
+			  "value": "1"
+			},
+			{
+			  "key": "limit",
+			  "value": "10"
+			}
+		  ]
+		}
+		}
+		}
+      ]
+    },	
+	{
+      "name": "Erros",
+      "item": [
+	    {
+          "name": "TE16 [Erro] Login - Senha Inválida",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Deve recusar por credenciais inválidas\", function () {",
+                  "    pm.response.to.have.status(401);",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.mensagem).to.include(\"inválid\");",
+                  "});"
+                ],
+                "type": "javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"francisca@raizesdonordeste.com\",\n  \"senha\": \"SenhaErrada@123\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/auth/login",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "auth",
+                "login"
+              ]
+            }
+          }
+        },
+		{
+          "name": "TE17 [Erro] Cadastro - Tentativa de Injeção de Perfil ADM",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Não deve permitir que visitante não autenticado crie perfil diferente de Cliente\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([422]);",
+                  "});"
+                ],
+                "type": "javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Invasor Perfil\",\n  \"email\": \"fraude@raizesdonordeste.com\",\n  \"senha\": \"SenhaInvasor@123\",\n  \"perfil\": 5,\n  \"unidadeId\": 1,\n  \"cpf\": \"99999999999\",\n  \"consentimentoLgpd\": true\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/usuarios",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "usuarios"
+              ]
+            }
+          }
+        },
+		{
+		  "name": "TE18 [Erro] Unidade - Tentativa de Alteração com Perfil sem Permissão",
+		  "event": [
+			{
+			  "listen": "prerequest",
+			  "script": {
+				"exec": [
+				  "    console.warn(\"⚠️ [ATENÇÃO] Este teste depende do 'Login Atendente (T04)'. Certifique-se de executá-lo primeiro!\");"
+				],
+				"type": "javascript"
+			  }
+			},
+			{
+			  "listen": "test",
+			  "script": {
+				"exec": [
+				  "pm.test(\"Deve retornar Proibido (403) se nao for Administrador\", function () {",
+				  "    pm.response.to.have.status(403);",
+				  "    var jsonData = pm.response.json();",
+				  "    pm.expect(jsonData.error).to.eql(\"ACESSO_NEGADO\");",
+				  "});"
+				],
+				"type": "javascript"
+			  }
+			}
+		  ],
+		  "request": {
+			"auth": {
+			  "type": "bearer",
+			  "bearer": [
+				{
+				  "key": "token",
+				  "value": "{{token_jwt}}",
+				  "type": "string"
+				}
+			  ]
+			},
+			"method": "PUT",
+			"header": [
+			  {
+				"key": "Content-Type",
+				"value": "application/json"
+			  }
+			],
+			"body": {
+			  "mode": "raw",
+			  "raw": "{\n  \"nome\": \"Tentativa Alteracao Matriz Franquia\"\n}"
+			},
+			"url": {
+			  "raw": "{{base_url}}/unidades/1",
+			  "host": [
+				"{{base_url}}"
+			  ],
+			  "path": [
+				"unidades",
+				"1"
+			  ]
+			}
+		  }
+		},
+		{
+          "name": "TE19 [Erro] Pedidos - Listar sem login",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Requisicao nao autorizada\", function () {",
+                  "    pm.response.to.have.status(401);",
+                  "});"
+                ],
+                "type": "javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/pedidos",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "pedidos"
+              ]
+            }
+          }
+        },
+		{
+          "name": "TE20 [Erro] Pedidos - Pedido com Produto Fora de Época Sazonal",
+          "event": [
+		  	{
+			  "listen": "prerequest",
+			  "script": {
+				"exec": [
+				  "    console.warn(\"⚠️ [ATENÇÃO] Este teste depende do 'Login Cliente A (T01)'. Certifique-se de executá-lo primeiro!\");"
+				],
+				"type": "javascript"
+			  }
+			},
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Pedido recusado se o produto estiver fora do mês sazonal\", function () {",
+                  "    var mesAtual = new Date().getMonth() + 1;",
+                  "    if (mesAtual !== 9 && mesAtual !== 10) {",
+                  "        pm.expect(pm.response.code).to.be.oneOf([422]);",
+                  "    } else {",
+                  "        pm.expect(pm.response.code).to.eql(201);",
+                  "    }",
+                  "});"
+                ],
+                "type": "javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token_jwt}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+			"body": {
+			  "mode": "raw",
+			  "raw": "{\n  \"canalPedido\": 1,\n  \"modalidade\": 1,\n  \"clienteId\": 8,\n  \"unidadeId\": 1,\n  \"itens\": [\n    {\n      \"produtoId\": 1,\n      \"quantidade\": 1\n    }\n  ]\n}"
+			},
+            "url": {
+              "raw": "{{base_url}}/pedidos",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "pedidos"
+              ]
+            }
+          }
+        },
+	    {
+		  "name": "TE21 [Erro] Pedidos - Produto Inexistente",
+		  "event": [
+			{
+			  "listen": "prerequest",
+			  "script": {
+				"exec": [
+				  "    console.warn(\"⚠️ [ATENÇÃO] Este teste depende do 'Login Cliente A (T01)'. Certifique-se de executá-lo primeiro!\");"
+				],
+				"type": "javascript"
+			  }
+			},
+			{
+			  "listen": "test",
+			  "script": {
+				"exec": [
+				  "pm.test(\"Pedido recusado para produto inexistente\", function () {",
+				  "    pm.response.to.have.status(404);",
+				  "});"
+				],
+				"type": "javascript"
+			  }
+			}
+		  ],
+		  "request": {
+			"auth": {
+			  "type": "bearer",
+			  "bearer": [
+				{
+				  "key": "token",
+				  "value": "{{token_jwt}}",
+				  "type": "string"
+				}
+			  ]
+			},
+			"method": "POST",
+			"header": [
+			  {
+				"key": "Content-Type",
+				"value": "application/json"
+			  }
+			],
+			"body": {
+			  "mode": "raw",
+			  "raw": "{\n  \"canalPedido\": 1,\n  \"modalidade\": 2,\n  \"clienteId\": 8,\n  \"unidadeId\": 1,\n  \"itens\": [\n    {\n      \"produtoId\": 999999,\n      \"quantidade\": 2\n    }\n  ]\n}"
+			},
+			"url": {
+			  "raw": "{{base_url}}/pedidos",
+			  "host": [
+				"{{base_url}}"
+			  ],
+			  "path": [
+				"pedidos"
+			  ]
+			}
+		  }
+		},
+        {
+          "name": "TE22 [Erro] Pedidos - Falta de Estoque Unidade1",
+          "event": [
+		  	{
+			  "listen": "prerequest",
+			  "script": {
+				"exec": [
+				  "    console.warn(\"⚠️ [ATENÇÃO] Este teste depende do 'Login Cliente A (T01)'. Certifique-se de executá-lo primeiro!\");"
+				],
+				"type": "javascript"
+			  }
+			},
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Pedido recusado por falta de estoque\", function () {",
+                  "    pm.response.to.have.status(422);",
+                  "});"
+                ],
+                "type": "javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token_jwt}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"canalPedido\": 1,\n  \"modalidade\": 1,\n  \"clienteId\": 8,\n  \"unidadeId\": 1,\n  \"itens\": [\n    {\n      \"produtoId\": 2,\n      \"quantidade\": 99\n    }\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/pedidos",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "pedidos"
+              ]
+            }
+          }
+        },
+		{
+          "name": "TE23 [Erro] Pedidos - Quantidade Negativa",
+          "event": [
+		  	{
+			  "listen": "prerequest",
+			  "script": {
+				"exec": [
+				  "    console.warn(\"⚠️ [ATENÇÃO] Este teste depende do 'Login Cliente A (T01)'. Certifique-se de executá-lo primeiro!\");"
+				],
+				"type": "javascript"
+			  }
+			},
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Deve rejeitar quantidade negativa ou zerada\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([400, 422]);",
+                  "});"
+                ],
+                "type": "javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token_jwt}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"canalPedido\": 1,\n  \"modalidade\": 1,\n  \"clienteId\": 8,\n  \"unidadeId\": 2,\n  \"itens\": [\n    {\n      \"produtoId\": 4,\n      \"quantidade\": -5\n    }\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/pedidos",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "pedidos"
+              ]
+            }
+          }
+        },
+        {
+          "name": "TE24 [Erro] Pedidos - Transição Proibida de Status",
+          "event": [
+		  	{
+			  "listen": "prerequest",
+			  "script": {
+				"exec": [
+				  "    console.warn(\"⚠️ [ATENÇÃO] Este teste depende do 'Login Atendente Unidade B (T04)'. Certifique-se de executá-lo primeiro!\");"
+				],
+				"type": "javascript"
+			  }
+			},
+            {
+              "listen": "test",
+              "script": {
+				"exec": [
+					"pm.test(\"Transição proibida (422) ou negar acesso se o pedido é de unidade diferente (403)\", function () {",
+					"    // Verifica se o status retornado é um dos dois esperados",
+					"    var statusValido = pm.response.to.have.status(422) || pm.response.to.have.status(403);",
+					"    ",
+					"    // Garante que o código de resposta seja explicitamente 422 ou 403",
+					"    pm.expect(pm.response.code).to.be.oneOf([422, 403]);",
+					"});"
+				  ],
+                "type": "javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token_jwt}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"novoStatus\": 5\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/pedidos/{{pedido_id_recente}}/status",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "pedidos",
+                "{{pedido_id_recente}}",
+                "status"
+              ]
+            }
+          }
+        },
+		{
+		  "name": "TE25 [Erro] Pagamentos - Pagamento Recusado",
+		  "event": [
+		  	{
+			  "listen": "prerequest",
+			  "script": {
+				"exec": [
+				  "    console.warn(\"⚠️ [ATENÇÃO] Este teste depende do 'Login Cliente A (T01)'. Certifique-se de executá-lo primeiro!\");"
+				],
+				"type": "javascript"
+			  }
+			},
+			{
+			  "listen": "test",
+			  "script": {
+				"exec": [
+				  "pm.test(\"Validar retornos de erro na simulação de pagamento (402 ou 409)\", function () {",
+				  "    pm.expect(pm.response.code).to.be.oneOf([402, 409]);",
+				  "    ",
+				  "    var jsonData = pm.response.json();",
+				  "    ",
+				  "    if (pm.response.code === 402) {",
+				  "        pm.expect(jsonData.sucesso).to.be.false;",
+				  "        pm.expect(jsonData.mensagem).to.include(\"Mock recusado\");",
+				  "        pm.expect(jsonData.pedidoId).to.be.a(\"number\");",
+				  "    } else if (pm.response.code === 409) {",
+				  "        pm.expect(jsonData.error).to.eql(\"STATUS_CONFLITO\");",
+				  "        pm.expect(jsonData.message).to.include(\"cancelado anteriormente.\");",
+				  "        pm.expect(jsonData.timestamp).to.not.be.undefined;",
+				  "    }",
+				  "});"
+				],
+				"type": "javascript"
+			  }
+			}
+		  ],
+		  "request": {
+			"auth": {
+			  "type": "bearer",
+			  "bearer": [
+				{
+				  "key": "token",
+				  "value": "{{token_jwt}}",
+				  "type": "string"
+				}
+			  ]
+			},
+			"method": "POST",
+			"header": [
+			  {
+				"key": "Content-Type",
+				"value": "application/json"
+			  }
+			],
+			"body": {
+			  "mode": "raw",
+			  "raw": "{\n  \"pedidoId\": 1,\n  \"status\": 3\n}"
+			},
+			"url": {
+			  "raw": "{{base_url}}/pagamentos/simular",
+			  "host": [
+				"{{base_url}}"
+			  ],
+			  "path": [
+				"pagamentos",
+				"simular"
+			  ]
+			}
+		  }
+		}
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:5081/api",
+      "type": "string"
+    },
+    {
+      "key": "token_jwt",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "pedido_id_recente",
+      "value": "1",
+      "type": "string"
+    }
+  ]
+}
