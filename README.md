@@ -232,7 +232,7 @@ Para facilitar a execução dos testes e a utilização das rotas protegidas da 
 
 ## 6. Guia de Testes
 
-#### 6.1 Acessando a Documentação Swagger/OpenAPI
+### 6.1 Documentação Swagger/OpenAPI
 
 Com a aplicação em execução, a interface interativa do Swagger/OpenAPI pode ser acessada diretamente através do seu navegador
 
@@ -243,7 +243,9 @@ http://localhost:5081/swagger/index.html
 A interface Swagger permite visualizar, documentar e executar as rotas da API diretamente pelo navegador.
 
 
-#### 6.2 Testes via Postman
+### 6.2 Testes via Postman
+
+##### PASSO 1: Importar a coleção
 
 O projeto disponibiliza uma coleção Postman contendo exemplos de chamadas para os principais fluxos da aplicação. 
 O arquivo encontra-se na pasta `postman` do projeto com o nome:
@@ -251,16 +253,15 @@ O arquivo encontra-se na pasta `postman` do projeto com o nome:
 ```text
 raizes-do-nordeste.postman_collection.json
 ```
-##### Importando a coleção
-
-Para utilizar a coleção, siga os passos abaixo:
+Para importar a coleção:
 
 1. Abra o **Postman**.
 2. Clique em **Import**.
 3. Selecione o arquivo `raizes-do-nordeste.postman_collection.json`.
-4. Execute os testes na ordem citada abaixo.
 
-##### Ordem de Execução dos Testes
+##### PASSO 2: Executar os Testes
+
+A ordem de execução apresentada a seguir foi organizada para respeitar as dependências e pré-condições existentes entre os cenários de teste.
 
 | Código | Cenário | Objetivo |
 | ------- | -------- | --------- |
@@ -301,7 +302,6 @@ A coleção foi configurada para automatizar o processo de autenticação das ro
   As demais requisições protegidas utilizam a configuração de autorização do tipo **Bearer Token**, referenciando a variável `{{token_jwt}}`.
 
 Dessa forma, após executar o login com sucesso, não é necessário copiar ou colar o token manualmente; todas as requisições subsequentes serão autenticadas automaticamente.
-
 
 * **Pré-condições configuradas (encadeamento de testes / dependência de execução):**  
   Alguns testes fazem parte de fluxos encadeados e dependem da execução bem-sucedida de uma ou mais requisições anteriores para que o resultado esperado seja obtido.
