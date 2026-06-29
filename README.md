@@ -221,12 +221,13 @@ Para facilitar a execução dos testes e a utilização das rotas protegidas da 
 
 1. Certifique-se de que o projeto `RaizesDoNordeste.API` está definido como **Projeto de Inicialização** (*Startup Project*).
 
-2. Pressione `F5` para executar a aplicação em **modo de depuração**, ou `Ctrl + F5` para executá-la **sem depuração**.
+2. Na barra superior do Visual Studio, selecione o perfil `http` ao lado do botão **Executar (▶)**.
 
-3. Aguarde a abertura da janela do terminal e a mensagem indicando que a aplicação está em execução.
+3. Pressione `F5` para executar a aplicação em **modo de depuração**, ou `Ctrl + F5` para executá-la **sem depuração**.
 
-> ✅ **Execução bem-sucedida:**  
-> A API estará disponível nos endereços configurados no arquivo `launchSettings.json`, normalmente utilizando os protocolos HTTP e/ou HTTPS.
+4. Aguarde a abertura da janela do terminal e a mensagem informando que a aplicação está em execução.
+
+> ⚠️ **Importante:** A coleção Postman disponibilizada com o projeto foi configurada para utilizar o ambiente HTTP. Por esse motivo, recomenda-se selecionar o perfil `http` antes de iniciar a aplicação.
 
 ---
 
