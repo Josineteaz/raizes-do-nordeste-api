@@ -80,31 +80,32 @@ Para executar a aplicação é necessário possuir:
 ```text
 📁 raizes-do-nordeste-api
 │
-├── 📁 db/                                 # Carga inicial do Banco de Dados
+├── 📁 db/
 │   └── 📄 database_seed.sql
 │
-├── 📁 docs/                               # Modelagem e documentação gráfica
+├── 📁 docs/
 │   ├── 📄 diagrama-der.pdf
-│   └── 📄 diagrama-classe.pdf
+│   ├── 📄 diagrama-classe.pdf
+│   └── 📄 diagrama-sequencia.pdf
 │
-├── 📁 postman/                            # Coleção de testes do Postman
+├── 📁 postman/
 │   └── 📄 raizes-do-nordeste.postman_collection.json
 │
-├── 📁 src/                                # Código-fonte do Back-end
-│   ├── 📄 RaizesDoNordeste.sln            # Arquivo de Solução do Visual Studio
-│   └── 📁 RaizesDoNordeste.API/           # Projeto Principal da Web API (.NET 8)
-│       ├── 📁 Properties/                 # Configurações de inicialização (launchSettings.json)
-│       ├── 📁 Application/                # Camada de Aplicação (Casos de uso, DTOs, Mapeamentos)
-│       ├── 📁 Controllers/                # Endpoints e rotas da API
-│       ├── 📁 Domain/                     # Camada de Domínio (Entidades, Interfaces, Regras de Negócio)
-│       ├── 📁 Infrastructure/              # Camada de Infraestrutura (Contexto do EF Core, Repositórios)
-│       ├── 📁 Migrations/                 # Histórico de versionamento do Banco de Dados (EF Core)
-│       ├── 📄 env.example                # Modelo das variáveis de ambiente (Enviado ao Git)
-│       ├── 📄 appsettings.json            # Configurações padrão do ecossistema .NET
-│       ├── 📄 Program.cs                  # Ponto de entrada e configuração da aplicação (Middlewares/DI)
-│       └── 📄 RaizesDoNordeste.http       # Arquivo de testes rápidos de requisições HTTP
+├── 📁 src/
+│   ├── 📄 RaizesDoNordeste.sln
+│   └── 📁 RaizesDoNordeste.API/
+│       ├── 📁 Properties/
+│       ├── 📁 Application/
+│       ├── 📁 Controllers/
+│       ├── 📁 Domain/
+│       ├── 📁 Infrastructure/
+│       ├── 📁 Migrations/
+│       ├── 📄 env.example
+│       ├── 📄 appsettings.json
+│       ├── 📄 Program.cs
+│       └── 📄 RaizesDoNordeste.http
 │
-└── 📄 README.md                           # Manual de execução obrigatório
+└── 📄 README.md
 ```
 
 
