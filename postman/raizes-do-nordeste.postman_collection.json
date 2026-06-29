@@ -774,7 +774,7 @@
       "name": "Auditoria",
       "item": [
 		{
-			"name": "T15 [Sucesso] Consultar Logs de ACESSO_SENSIVEL",
+			"name": "T15 [Sucesso] Consultar Logs",
 			"event": [
 			{
 			  "listen": "prerequest",
@@ -826,7 +826,7 @@
 		"method": "GET",
 		"header": [],
 		"url": {
-		  "raw": "{{base_url}}/auditorias/logs?acao=ACESSO_SENSIVEL&page=1&limit=10",
+		  "raw": "{{base_url}}/auditorias/logs?page=1&limit=10",
 		  "host": [
 			"{{base_url}}"
 		  ],
@@ -835,11 +835,6 @@
 			"logs"
 		  ],
 		  "query": [
-			{
-			  "key": "acao",
-			  "value": "ACESSO_SENSIVEL",
-			  "description": "Filtro por tipo de ação de auditoria"
-			},
 			{
 			  "key": "recurso",
 			  "value": "usuarios",
@@ -1386,7 +1381,7 @@
 			],
 			"body": {
 			  "mode": "raw",
-			  "raw": "{\n  \"pedidoId\": 1,\n  \"status\": 3\n}"
+			  "raw": "{\n  \"pedidoId\": 2,\n  \"status\": 3\n}"
 			},
 			"url": {
 			  "raw": "{{base_url}}/pagamentos/simular",
