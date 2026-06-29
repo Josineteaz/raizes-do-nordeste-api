@@ -144,7 +144,7 @@ dotnet restore
 ##### Configuração da conexão com o banco de dados
 
 ```bash
-ConnectionStrings__DefaultConnection="Server=SeuServidor,1433;Database=RaizesDoNordesteDb;User Id=SeuUsuario;Password=SuaSenha;TrustServerCertificate=True;""
+ConnectionStrings__DefaultConnection="Server=SeuServidor;Database=RaizesDoNordesteDb;User Id=SeuUsuario;Password=SuaSenha;TrustServerCertificate=True;"
 ```
 
 ⚠️ **Observações:**
@@ -208,7 +208,7 @@ Para facilitar a execução dos testes e a utilização das rotas protegidas da 
 
 1. Abra o **SQL Server Management Studio (SSMS)** e conecte-se à sua instância do SQL Server.
 2. Expanda a pasta **Databases** e localize o banco de dados `RaizesDoNordesteDb`. Em seguida, clique com o botão direito sobre ele e selecione **New Query** (*Nova Consulta*).
-3. Copie, cole e execute o conteúdo do script localizado na raiz do projeto: `database_seed.sql`.
+3. Copie, cole e execute o conteúdo do script `database_seed.sql` localizado na `db` do projeto.
 
 > 🔐 **Nota de Segurança:**
 >
